@@ -1,47 +1,55 @@
 import axios from "axios"
 import { useQuery } from "@tanstack/react-query";
+import "../styles/Home.scss"
+import { LoadingOutlined } from "@ant-design/icons";
+import { Spin } from 'antd';
 
-interface Ingredients{
-    food: string;
-    
-}
+
 interface Recipes {
     recipe: {
         label: string;
         image: string
-        ingredients: Ingredients[]
+        ingredientLines: string[]
     }
 }
 
-const Fetch = () => {
 
+const Fetch = () => {
+    const id = import.meta.env.VITE_API_ID 
+    const key = import.meta.env.VITE_API_KEY
     const fetchData = async () => {
-        return await axios.get(`https://api.edamam.com/search?q=pasta&app_id=bfe555d6&app_key=592368c606b459b6da30450e9c1929ed`)
+        return await axios.get(`${import.meta.env.VITE_API}?q=recipe&app_id=${id}&app_key=${key}`)
     }
 
-    const {isLoading, data, error} = useQuery({queryKey: ['recipe'], queryFn: fetchData})
+    const { isLoading, data, error } = useQuery({ queryKey: ['recipe'], queryFn: fetchData })
 
     console.log("data", data)
-    if(isLoading){
-        return <h3>Loading....</h3>
+    if (isLoading) {
+        return <Spin indicator={<LoadingOutlined className="Spiner" spin />} />
     }
-    if(error){
+    if (error) {
         return <h3>Error 404!</h3>
     }
 
     // console.log(post, "post");
     return (
-        <div id="cards">
-            {
+        <>
+        <div className="cardsContainer">
+             {
                 data?.data.hits.map((item: Recipes, index: number) => (
-                    <div key={index} >
-                        <h2>{item.recipe.label}</h2>
-                        <img src={item.recipe.image} alt="Pasta" />
-                        <p>{item.recipe.ingredients}</p>
+                    <div className="card-1" key={index} >
+                        <h2 className="foodlabel">{item.recipe.label}</h2>
+                        <img className="foodimg" src={item.recipe.image} alt="Pasta" />
+                        <div id="ingredientContainer" >
+                        {item.recipe.ingredientLines.map((ingre, ind: number)=>{
+                            return <p id="ingredientLines" key={ind}>{ingre}</p>
+                        })}
+                        </div>
                     </div>
                 )
                 )}
         </div>
+        </>
     )
 
 
