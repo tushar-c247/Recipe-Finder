@@ -16,18 +16,8 @@ li{
 .link{
     color: white;
 }
-
-.searchBar{
-    height: 28px;
-    width: 217px;
-    margin-left: 200px;
-    margin-top: 9px;
-
-}
-
-.serBtn{
-    height: 30px;
-    margin-top: 9px;
+.link:hover{
+    color: rgb(128, 167, 201);
 }
 
 .tag{
@@ -35,3 +25,47 @@ li{
     margin-left: 313px;
 }
 
+#navicon{
+    width: 44px;
+    height: 49px;
+    margin-left: 407px;
+}
+
+@media screen and (max-width: 918){
+    #navicon{
+        margin-left: 267px;
+    } 
+}
+
+@media only screen and (max-width: 768px) {
+    .searchBar {
+        margin-left: 20px;
+        width: 150px;
+    }
+
+    .tag {
+        margin-left: 10px;
+    }
+    #navicon{
+        margin-left: 10px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .navbar {
+        height: auto;
+    }
+
+    ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    li {
+        margin: 5px 0;
+    }
+
+    .tag {
+        margin-left: 10px;
+    }
+}
