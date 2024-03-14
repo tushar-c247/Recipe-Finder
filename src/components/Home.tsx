@@ -15,7 +15,7 @@ interface Recipes {
 }
 
 const Home: React.FC<any> = (props) => {
-    // console.log("ww", props);
+    const {recipeData} = props
 
     const [serInp, setSerInp] = useState<string>("");
     const [searchQuery, setSearchQuery] = useState<string>("recipe");
@@ -49,7 +49,7 @@ const Home: React.FC<any> = (props) => {
 
     return (
         <>
-            <div>
+            <div className="searchConatiner">
                 <input
                     className="searchBar"
                     value={serInp}
@@ -70,7 +70,7 @@ const Home: React.FC<any> = (props) => {
                             <Link to="/Recipe">
                                 <button
                                     id="RecDetBtn"
-                                    onClick={() => props.recipeData(item.recipe.ingredientLines)}
+                                    onClick={() => recipeData(item.recipe.ingredientLines, item.recipe.image)}
                                 >
                                     Recipe Details
                                 </button>

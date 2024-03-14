@@ -43,21 +43,28 @@
 .searchBar{
     height: 28px;
     width: 255px;
-    margin-left: 388px;
-    margin-top: 9px;
+    margin-top: 6px;
     border-radius: 10px;
     background-color: aliceblue;
 }
 
 .serBtn{
-    height: 28px;
-    margin-top: 9px;
+    height: 27px;
+    margin-top: 7px;
     border-radius: 6px;
     background-color: aliceblue;
-    margin-left: 2px;
+    margin-left: 1px;
 }
 .serBtn:hover{
     font-size: medium;
+}
+
+.searchConatiner{
+    display: flex;
+    justify-content: center;
+    background-color: dimgrey;
+    margin-top: 1px;
+    height: 44px;
 }
 
 #RecDetBtn{
@@ -66,6 +73,10 @@
 }
 
 @media only screen and (max-width: 768px) {
+    .searchBar {
+        width: 150px;
+
+    }
     .Spiner {
         margin-left: 20px;
         margin-top: 150px;

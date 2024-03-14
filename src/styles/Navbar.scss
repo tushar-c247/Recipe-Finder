@@ -4,11 +4,12 @@
     color: white;
 }
 
-ul{
+.navul{
     list-style: none;
     display: flex;
 }
-li{
+
+.navli{
     margin: 13px 13px;
     color: white;
 }
@@ -17,7 +18,7 @@ li{
     color: white;
 }
 .link:hover{
-    color: rgb(128, 167, 201);
+    color: rgb(93 165 197);
 }
 
 .tag{
@@ -33,16 +34,11 @@ li{
 
 @media screen and (max-width: 918){
     #navicon{
-        margin-left: 267px;
+        margin-left: auto;
     } 
 }
 
 @media only screen and (max-width: 768px) {
-    .searchBar {
-        margin-left: 20px;
-        width: 150px;
-    }
-
     .tag {
         margin-left: 10px;
     }

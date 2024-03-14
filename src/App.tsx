@@ -11,8 +11,10 @@ const queryClient = new QueryClient()
 
 function App() {
   const [ingreDetails, setingreDetails] = useState<string[]>([])
-  
-  function recipeData(data: string[]): void{
+  const [image, setImage] = useState<string>("")
+
+  function recipeData(data: string[], img: string): void{
+    setImage(img)
     setingreDetails(data)
   }
 
@@ -23,7 +25,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home recipeData={recipeData}/>} />
           <Route path="/about" element={<About />} />
-          <Route path="/Recipe" element={<RecipeDetails ingreDetails={ingreDetails}/>} />
+          <Route path="/Recipe" element={<RecipeDetails image={image} ingreDetails={ingreDetails}/>} />
         </Routes>
       </QueryClientProvider>
     </BrowserRouter>
