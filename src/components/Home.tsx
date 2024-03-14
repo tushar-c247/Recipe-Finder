@@ -9,6 +9,7 @@ interface Recipes {
         label: string;
         image: string;
         ingredientLines: string[];
+        calories: number
     };
 }
 
@@ -36,7 +37,7 @@ const Home: React.FC<any> = (props) => {
     if (error) {
         return <h3>Error 404!</h3>;
     }
-    
+
     return (
         <>
             <div className="cardsContainer">
@@ -48,7 +49,7 @@ const Home: React.FC<any> = (props) => {
                             <Link to="/Recipe">
                                 <button
                                     id="RecDetBtn"
-                                    onClick={() => recipeData(item.recipe.ingredientLines, item.recipe.image)}
+                                    onClick={() => recipeData(item.recipe.ingredientLines, item.recipe.image, item.recipe.calories, item.recipe.label)}
                                 >
                                     Details
                                 </button>

@@ -12,11 +12,15 @@ const queryClient = new QueryClient()
 function App() {
   const [ingreDetails, setingreDetails] = useState<string[]>([])
   const [image, setImage] = useState<string>("")
+  const [calori, setCalori] = useState<number>()
+  const [label, setLabel] = useState<string>("")
   const [serItem, setSerItem] = useState<string>("recipe")
 
-  function recipeData(data: string[], img: string): void {
+  function recipeData(data: string[], img: string, calori: number, label: string): void {
     setImage(img)
     setingreDetails(data)
+    setCalori(calori)
+    setLabel(label)
   }
 
   function serBar(serValue: string,): void {
@@ -24,7 +28,7 @@ function App() {
       setSerItem(serValue)
     }
   }
-  
+
   return (
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
@@ -32,7 +36,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home seritem={serItem} recipeData={recipeData} />} />
           <Route path="/about" element={<About />} />
-          <Route path="/Recipe" element={<RecipeDetails image={image} ingreDetails={ingreDetails} />} />
+          <Route path="/Recipe" element={<RecipeDetails label={label} calori={calori} image={image} ingreDetails={ingreDetails} />} />
         </Routes>
       </QueryClientProvider>
     </BrowserRouter>

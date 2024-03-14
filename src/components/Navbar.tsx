@@ -27,7 +27,6 @@ const Navbar: React.FC<any> = (props) => {
                     <button className="serBtn" onClick={() => setSerBar()}>
                         <SearchOutlined />
                     </button>
-                
                 </ul>
             </div>
 

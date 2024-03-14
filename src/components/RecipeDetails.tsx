@@ -1,16 +1,32 @@
 import "../styles/RecipeDetails.scss"
 import React from 'react'
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+// import Card from '@mui/material/Card';
+// import CardContent from '@mui/material/CardContent';
+// import CardMedia from '@mui/material/CardMedia';
+// import Typography from '@mui/material/Typography';
+// import { CardActionArea } from '@mui/material';
 
 const RecipeDetails: React.FC<any> = (props) => {
-  const {ingreDetails, image} = props
+  const { ingreDetails, image, calori, label} = props
   return (
     <div className='ingredientLines'>
-      <Card className="card" sx={{ maxWidth: 400}}>
+      <div>
+      <h2>{label}</h2>
+      <img id="ingrediImg" src={image} alt="IngredientImage" /></div>
+      <div className="listdetails">  
+            <h4>Calories - {calori}</h4>
+            <h3>Ingredients-</h3>
+            {ingreDetails?.map((item: string, ind: number) => {
+        return <ul key={ind} className="recUl"><li style={{ color: 'black' }} key={ind}>{item}</li></ul>
+      })}
+      </div>
+    </div>
+  )
+}
+
+export default RecipeDetails
+
+{/* <Card className="card" sx={{ maxWidth: 400}}>
         <CardActionArea>
           <CardMedia
             component="img"
@@ -30,9 +46,4 @@ const RecipeDetails: React.FC<any> = (props) => {
             </Typography>
           </CardContent>
         </CardActionArea>
-      </Card>
-    </div>
-  )
-}
-
-export default RecipeDetails
+      </Card> */}
