@@ -14,8 +14,8 @@ const RecipeDetails: React.FC<any> = (props) => {
       <h2>{label}</h2>
       <img id="ingrediImg" src={image} alt="IngredientImage" /></div>
       <div className="listdetails">  
-            <h4>Calories - {calori}</h4>
-            <h3>Ingredients-</h3>
+            <h4 id="calori">Calories - {calori}</h4>
+            <h3 id="ingredient">Ingredients-</h3>
             {ingreDetails?.map((item: string, ind: number) => {
         return <ul key={ind} className="recUl"><li style={{ color: 'black' }} key={ind}>{item}</li></ul>
       })}
