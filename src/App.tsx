@@ -12,20 +12,27 @@ const queryClient = new QueryClient()
 function App() {
   const [ingreDetails, setingreDetails] = useState<string[]>([])
   const [image, setImage] = useState<string>("")
+  const [serItem, setSerItem] = useState<string>("recipe")
 
-  function recipeData(data: string[], img: string): void{
+  function recipeData(data: string[], img: string): void {
     setImage(img)
     setingreDetails(data)
   }
 
+  function serBar(serValue: string,): void {
+    if (serValue !== "") {
+      setSerItem(serValue)
+    }
+  }
+  
   return (
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
-        <Navbar />
+        <Navbar serBar={serBar} />
         <Routes>
-          <Route path="/" element={<Home recipeData={recipeData}/>} />
+          <Route path="/" element={<Home seritem={serItem} recipeData={recipeData} />} />
           <Route path="/about" element={<About />} />
-          <Route path="/Recipe" element={<RecipeDetails image={image} ingreDetails={ingreDetails}/>} />
+          <Route path="/Recipe" element={<RecipeDetails image={image} ingreDetails={ingreDetails} />} />
         </Routes>
       </QueryClientProvider>
     </BrowserRouter>

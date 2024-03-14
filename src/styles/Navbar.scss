@@ -1,12 +1,14 @@
 .navbar{
-    background-color: black;
+    background-color: #181616;
     height: 50px;
     color: white;
+    width: 100vw;
 }
 
 .navul{
     list-style: none;
     display: flex;
+    // justify-content: center;
 }
 
 .navli{
@@ -26,24 +28,41 @@
     margin-left: 313px;
 }
 
-#navicon{
-    width: 44px;
-    height: 49px;
-    margin-left: 407px;
+.searchBar{
+    height: 28px;
+    width: 240px;
+    margin-top: 9px;
+    background-color: aliceblue;
+    margin-left: 175px;
+    border-style: double;
 }
 
-@media screen and (max-width: 918){
-    #navicon{
-        margin-left: auto;
-    } 
+.serBtn{
+    height: 28px;
+    margin-top: 10px;
+    background-color: aliceblue;
+    margin-left: 1px;
 }
+
+@media only screen and (max-width: 918px){
+    .tag{
+        margin-left: auto;
+    }
+    .searchBar{
+        margin-right: 2px;
+    }
+    .serBtn{
+        margin-right: 26px;
+    }
+}
+    
 
 @media only screen and (max-width: 768px) {
     .tag {
-        margin-left: 10px;
+        margin-left: auto;
     }
-    #navicon{
-        margin-left: 10px;
+    .searchBar{
+        margin-left: auto;
     }
 }
 
@@ -63,5 +82,9 @@
 
     .tag {
         margin-left: 10px;
+    }
+    .searchBar{
+        margin: auto;
+        margin-top: 2px;
     }
 }

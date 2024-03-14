@@ -1,8 +1,6 @@
 import "../styles/Home.scss";
-import { useState } from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
-import { SearchOutlined } from "@ant-design/icons";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Link } from "react-router-dom";
 
@@ -15,55 +13,35 @@ interface Recipes {
 }
 
 const Home: React.FC<any> = (props) => {
-    const {recipeData} = props
-
-    const [serInp, setSerInp] = useState<string>("");
-    const [searchQuery, setSearchQuery] = useState<string>("recipe");
-
-    function inputData() {
-        setSearchQuery(serInp);
-        setSerInp("");
-    }
+    const { recipeData, seritem } = props
 
     const id = import.meta.env.VITE_API_ID;
     const key = import.meta.env.VITE_API_KEY;
+
     const fetchData = async () => {
         return await axios.get(
-            `${import.meta.env.VITE_API}?q=${searchQuery}&app_id=${id}&app_key=${key}`
+            `${import.meta.env.VITE_API}?q=${seritem}&app_id=${id}&app_key=${key}`
         );
     };
 
     const { isLoading, data, error } = useQuery({
-        queryKey: ["recipe", searchQuery],
+        queryKey: ["recipe", seritem],
         queryFn: fetchData,
     });
 
     console.log("data", data);
     if (isLoading) {
-        return <CircularProgress className="Spiner" />;
+        return <div className="cardsContainer"><CircularProgress /></div>;
     }
     if (error) {
         return <h3>Error 404!</h3>;
     }
-
-
+    
     return (
         <>
-            <div className="searchConatiner">
-                <input
-                    className="searchBar"
-                    value={serInp}
-                    type="text"
-                    placeholder="Search here"
-                    onChange={(e) => setSerInp(e.target.value)}
-                />
-                <button className="serBtn" onClick={inputData}>
-                    <SearchOutlined />
-                </button>
-            </div>
             <div className="cardsContainer">
                 {data?.data.hits.map((item: Recipes, index: number) => (
-                    <div className="card-1" key={index}>
+                    <div className="oneCard" key={index}>
                         <h2 className="foodlabel">{item.recipe.label}</h2>
                         <img className="foodimg" src={item.recipe.image} alt="Pasta" />
                         <div id="ingredientContainer">
@@ -72,7 +50,7 @@ const Home: React.FC<any> = (props) => {
                                     id="RecDetBtn"
                                     onClick={() => recipeData(item.recipe.ingredientLines, item.recipe.image)}
                                 >
-                                    Recipe Details
+                                    Details
                                 </button>
                             </Link>
                             {/* {item.recipe.ingredientLines.map((ingre: string, ind: number) => {
