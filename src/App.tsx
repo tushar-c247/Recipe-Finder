@@ -10,17 +10,21 @@ import { useState } from 'react';
 const queryClient = new QueryClient()
 
 function App() {
-  const [ingreDetails, setingreDetails] = useState<string[]>([])
-  const [image, setImage] = useState<string>("")
-  const [calori, setCalori] = useState<number>()
   const [label, setLabel] = useState<string>("")
+  const [image, setImage] = useState<string>("")
+  const [dishType, setDishType] = useState<string[]>([])
+  const [mealType, setMealType] = useState<string[]>([])
+  const [calori, setCalori] = useState<number>()
+  const [ingreDetails, setingreDetails] = useState<string[]>([])
   const [serItem, setSerItem] = useState<string>("recipe")
 
-  function recipeData(data: string[], img: string, calori: number, label: string): void {
+  function recipeData(data: string[], img: string, calori: number, label: string, dishType: string[], mealType: string[]): void {
     setImage(img)
     setingreDetails(data)
     setCalori(calori)
     setLabel(label)
+    setDishType(dishType)
+    setMealType(mealType)
   }
 
   function serBar(serValue: string,): void {
@@ -36,7 +40,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home seritem={serItem} recipeData={recipeData} />} />
           <Route path="/about" element={<About />} />
-          <Route path="/Recipe" element={<RecipeDetails label={label} calori={calori} image={image} ingreDetails={ingreDetails} />} />
+          <Route path="/Recipe" element={<RecipeDetails label={label}  image={image} dishType={dishType}  mealType={mealType} calori={calori} ingreDetails={ingreDetails} />} />
         </Routes>
       </QueryClientProvider>
     </BrowserRouter>

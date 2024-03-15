@@ -7,15 +7,17 @@ import React from 'react'
 // import { CardActionArea } from '@mui/material';
 
 const RecipeDetails: React.FC<any> = (props) => {
-  const { ingreDetails, image, calori, label} = props
+  const { ingreDetails, image, calori, label, dishType, mealType} = props
   return (
     <div className='ingredientLines'>
       <div>
-      <h2>{label}</h2>
-      <img id="ingrediImg" src={image} alt="IngredientImage" /></div>
+      <h2 id="detailslabel">{label}</h2>
+      <img id="ingrediImg" src={image} alt="wIngredientImage" /></div>
       <div className="listdetails">  
-            <h4 id="calori">Calories - {calori}</h4>
-            <h3 id="ingredient">Ingredients-</h3>
+            <p className="rectype">DishType- {dishType}</p>
+            <p className="rectype">MelaType- {mealType}</p>
+            <p  className="rectype">Calories - {calori}</p>
+            <p  className="ingredient">Ingredients-</p>
             {ingreDetails?.map((item: string, ind: number) => {
         return <ul key={ind} className="recUl"><li style={{ color: 'black' }} key={ind}>{item}</li></ul>
       })}

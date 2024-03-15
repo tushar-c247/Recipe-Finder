@@ -20,6 +20,7 @@ const Navbar: React.FC<any> = (props) => {
                     <li className='navli'><Link className='link' to="/">Home</Link></li>
                     <li className='navli'><Link className="link" to="/about">About</Link></li>
                     <h2 className='tag'>Recipe.Finder</h2>
+                    <div>
                     <input className="searchBar" value={ser} type="text"
                         placeholder=" Search here"
                         onChange={(e) => setSer(e.target.value)}
@@ -27,6 +28,7 @@ const Navbar: React.FC<any> = (props) => {
                     <button className="serBtn" onClick={() => setSerBar()}>
                         <SearchOutlined />
                     </button>
+                    </div>
                 </ul>
             </div>
 

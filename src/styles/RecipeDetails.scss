@@ -1,3 +1,7 @@
+#detailslabel{
+  margin-top: 7px;
+}
+
 .ingredientLines {
   display: flex;
   justify-content: center;
@@ -13,8 +17,12 @@
   box-shadow: 2px 2px 10px;
 }
 
-#ingredient{
-    margin-top: 10px;
+.ingredient{
+    margin-top: 40px;
+}
+
+.rectype{
+  margin-top: 10px;
 }
 
 #ingrediImg {
@@ -34,4 +42,24 @@
 
 .recUl{
 margin-top: 8px;
+}
+
+@media only screen and (max-width: 768px) {
+  
+
+  #ingrediImg {
+   
+  }
+
+  
+}
+
+@media only screen and (max-width: 480px){
+  #detailslabel{
+    margin-left: 10px;
+  }
+  #ingrediImg {
+    height: 40%;
+    margin-left: 10PX;
+  }
 }
