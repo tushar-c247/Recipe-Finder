@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom'
 import "../styles/Navbar.scss"
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { SearchOutlined } from "@ant-design/icons";
+import RecipeContex from '../context/recipe/recipeContext';
 
-const Navbar: React.FC<any> = (props) => {
-    const { serBar } = props;
+const Navbar: React.FC<any> = () => {
+    
+    const contex = useContext(RecipeContex)
+    const {serBar} = contex
 
     const [ser, setSer] = useState<string>("")
 
@@ -31,7 +34,6 @@ const Navbar: React.FC<any> = (props) => {
                     </div>
                 </ul>
             </div>
-
         </>
     )
 }

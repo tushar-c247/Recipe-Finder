@@ -1,49 +1,28 @@
 import './App.scss'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import RecipeState from './context/recipe/RecipeState';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from './components/Home'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import Navbar from './components/Navbar'
+import Home from './components/Home'
 import About from './components/About';
 import RecipeDetails from './components/RecipeDetails';
-import { useState } from 'react';
 
 const queryClient = new QueryClient()
 
 function App() {
-  const [label, setLabel] = useState<string>("")
-  const [image, setImage] = useState<string>("")
-  const [dishType, setDishType] = useState<string[]>([])
-  const [mealType, setMealType] = useState<string[]>([])
-  const [calori, setCalori] = useState<number>()
-  const [ingreDetails, setingreDetails] = useState<string[]>([])
-  const [serItem, setSerItem] = useState<string>("recipe")
-
-  function recipeData(data: string[], img: string, calori: number, label: string, dishType: string[], mealType: string[]): void {
-    setImage(img)
-    setingreDetails(data)
-    setCalori(calori)
-    setLabel(label)
-    setDishType(dishType)
-    setMealType(mealType)
-  }
-
-  function serBar(serValue: string,): void {
-    if (serValue !== "") {
-      setSerItem(serValue)
-    }
-  }
-
   return (
-    <BrowserRouter>
-      <QueryClientProvider client={queryClient}>
-        <Navbar serBar={serBar} />
-        <Routes>
-          <Route path="/" element={<Home seritem={serItem} recipeData={recipeData} />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/Recipe" element={<RecipeDetails label={label}  image={image} dishType={dishType}  mealType={mealType} calori={calori} ingreDetails={ingreDetails} />} />
-        </Routes>
-      </QueryClientProvider>
-    </BrowserRouter>
+    <RecipeState>
+      <BrowserRouter>
+        <QueryClientProvider client={queryClient}>
+          <Navbar/>
+          <Routes>
+            <Route path="/" element={<Home/>} />
+            <Route path="/about" element={<About />} />
+            <Route path="/Recipe" element={<RecipeDetails/>} />
+          </Routes>
+        </QueryClientProvider>
+      </BrowserRouter>
+    </RecipeState>
   )
 }
 

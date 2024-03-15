@@ -44,22 +44,14 @@
 margin-top: 8px;
 }
 
-@media only screen and (max-width: 768px) {
-  
-
-  #ingrediImg {
-   
-  }
-
-  
-}
 
 @media only screen and (max-width: 480px){
   #detailslabel{
     margin-left: 10px;
   }
   #ingrediImg {
-    height: 40%;
+    height: 30%;
     margin-left: 10PX;
+    width: 68%;
   }
 }

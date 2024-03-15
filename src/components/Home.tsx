@@ -1,11 +1,13 @@
 import "../styles/Home.scss";
-import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
-import CircularProgress from "@mui/material/CircularProgress";
 import { Link } from "react-router-dom";
+import {fetchData} from "../api/FetchData"
+import { useContext } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
+import RecipeContex from "../context/recipe/recipeContext";
 
 interface Recipes {
-    recipe: {
+    recipe:{
         label: string;
         image: string;
         ingredientLines: string[];
@@ -15,21 +17,13 @@ interface Recipes {
     };
 }
 
-const Home: React.FC<any> = (props) => {
-    const { recipeData, seritem } = props
-
-    const id = import.meta.env.VITE_API_ID;
-    const key = import.meta.env.VITE_API_KEY;
-
-    const fetchData = async () => {
-        return await axios.get(
-            `${import.meta.env.VITE_API}?q=${seritem}&app_id=${id}&app_key=${key}`
-        );
-    };
+const Home: React.FC<any> = () => {
+    const context = useContext(RecipeContex)
+    const {recipeData, serItem} = context
 
     const { isLoading, data, error } = useQuery({
-        queryKey: ["recipe", seritem],
-        queryFn: fetchData,
+        queryKey: ["recipe", serItem],
+        queryFn: () => fetchData(serItem),
     });
 
     console.log("data", data);

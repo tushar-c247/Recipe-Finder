@@ -1,13 +1,16 @@
 import "../styles/RecipeDetails.scss"
-import React from 'react'
+import React, { useContext } from 'react'
 // import Card from '@mui/material/Card';
 // import CardContent from '@mui/material/CardContent';
 // import CardMedia from '@mui/material/CardMedia';
 // import Typography from '@mui/material/Typography';
 // import { CardActionArea } from '@mui/material';
+import RecipeContex from "../context/recipe/recipeContext"
 
-const RecipeDetails: React.FC<any> = (props) => {
-  const { ingreDetails, image, calori, label, dishType, mealType} = props
+const RecipeDetails: React.FC<any> = () => {
+
+  const { ingreDetails, image, calori, label, dishType, mealType} = useContext(RecipeContex)
+
   return (
     <div className='ingredientLines'>
       <div>
