@@ -14,6 +14,11 @@ interface Recipes {
         calories: number;
         dishType: string[];
         mealType: string[];
+        ingredients: {
+            text: string;
+            quantity: number;
+            weight: number
+        }
     };
 }
 
@@ -46,7 +51,7 @@ const Home: React.FC<any> = () => {
                                 <button
                                     id="RecDetBtn"
                                     onClick={() => recipeData(item.recipe.ingredientLines, item.recipe.image, item.recipe.calories, item.recipe.label,
-                                        item.recipe.dishType, item.recipe.mealType)}
+                                        item.recipe.dishType, item.recipe.mealType, item.recipe.ingredients)}
                                 >
                                     Details
                                 </button>

@@ -8,7 +8,7 @@
 }
 
 .oneCard{
-    border: 2px solid black;
+    border: 0px solid black;
     height: 350px;
     // margin-top: 10px;
     width: 300px;
@@ -19,6 +19,7 @@
     flex-direction: column;
     align-items: center;
     margin: 7px 14px;
+    background-color: #e7e7e7;
 } 
 
 .foodlabel{
@@ -42,6 +43,7 @@
 
 #RecDetBtn{
     margin-top: 12px;
+    background-color: #eeeeee;
 }
 
 @media only screen and (max-width: 768px) {

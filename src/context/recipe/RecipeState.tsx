@@ -14,14 +14,17 @@ const RecipeState: React.FC<RecipeStateProps> = (props) => {
     const [calori, setCalori] = useState<number>()
     const [ingreDetails, setingreDetails] = useState<string[]>([])
     const [serItem, setSerItem] = useState<string>("recipe")
+    const [ingredient, setIngrediet] = useState<string[]>([])
+    console.log("igredents", ingredient)
 
-    function recipeData(data: string[], img: string, calori: number, label: string, dishType: string[], mealType: string[]): void {
+    function recipeData(data: string[], img: string, calori: number, label: string, dishType: string[], mealType: string[], ingredient: string[]): void {
         setImage(img)
         setingreDetails(data)
         setCalori(calori)
         setLabel(label)
         setDishType(dishType)
         setMealType(mealType)
+        setIngrediet(ingredient)
     }
 
     function serBar(serValue: string,): void {
@@ -32,7 +35,7 @@ const RecipeState: React.FC<RecipeStateProps> = (props) => {
 
     return (
         <div>
-            <RecipeContex.Provider value={{recipeData, serBar, label, image, dishType, mealType, calori, ingreDetails,serItem}}>
+            <RecipeContex.Provider value={{recipeData, serBar, label, image, dishType, mealType, calori, ingreDetails, serItem, ingredient}}>
                 {props.children}
             </RecipeContex.Provider>
         </div>

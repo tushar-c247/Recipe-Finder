@@ -1,90 +1,104 @@
-.navbar{
-    background-color: #181616;
-    height: 50px;
-    color: white;
-    width: 100vw;
+.navbar {
+  background-color: #181616;
+  height: 50px;
+  color: white;
+  width: 100vw;
 }
 
-.navul{
-    list-style: none;
-    display: flex;
-    // justify-content: center;
+.navul {
+  list-style: none;
+  display: flex;
+  // justify-content: center;
 }
 
-.navli{
-    margin: 13px 13px;
-    color: white;
+.navli {
+  margin: 13px 13px;
+  color: white;
 }
 
-.link{
-    color: white;
+.link {
+  color: white;
 }
 .link:hover{
-    color: rgb(93 165 197);
+  color: #276bf3;
+  transform: m;
 }
 
-.tag{
-    margin-top: 11px;
-    margin-left: 313px;
+.tag {
+  margin-top: 11px;
+  margin-left: 313px;
 }
 
-.searchBar{
-    height: 28px;
-    width: 240px;
-    margin-top: 9px;
-    background-color: aliceblue;
-    margin-left: 130px;
-    border-style: double;
+.searchBar {
+  height: 28px;
+  width: 240px;
+  margin-top: 9px;
+  background-color: aliceblue;
+  margin-left: 130px;
+  border-style: double;
 }
 
-.serBtn{
-    height: 28px;
-    margin-top: 10px;
-    background-color: aliceblue;
-    margin-left: 1px;
+.serBtn {
+  height: 28px;
+  margin-top: 10px;
+  background-color: aliceblue;
+  margin-left: 1px;
 }
 
-@media only screen and (max-width: 918px){
-    .tag{
-        margin-left: auto;
-    }
-    .searchBar{
-        margin-right: 2px;
-    }
-    .serBtn{
-        margin-right: 26px;
-    }
+.serIngrContainer {
+  width: 100vw;
+  height: 49px;
+  margin-top: 1px;
+  background-color: #3f3d3d;
+  display: flex;
+  justify-content: center;
 }
-    
+
+.serinpgre  {
+    list-style: none;
+    margin-top: 8px;
+}
+
+@media only screen and (max-width: 918px) {
+  .tag {
+    margin-left: auto;
+  }
+  .searchBar {
+    margin-right: 2px;
+  }
+  .serBtn {
+    margin-right: 26px;
+  }
+}
 
 @media only screen and (max-width: 768px) {
-    .tag {
-        margin-left: auto;
-    }
-    .searchBar{
-        margin-left: auto;
-    }
+  .tag {
+    margin-left: auto;
+  }
+  .searchBar {
+    margin-left: auto;
+  }
 }
 
 @media only screen and (max-width: 480px) {
-    .navbar {
-        height: auto;
-    }
+  .navbar {
+    height: auto;
+  }
 
-    ul {
-        flex-direction: column;
-        align-items: center;
-    }
+  ul {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    li {
-        margin: 5px 0;
-    }
+  li {
+    margin: 5px 0;
+  }
 
-    .tag {
-        margin-left: 10px;
-    }
-    .searchBar{
-        margin: auto;
-        margin-top: 2px;
-    }
+  .tag {
+    margin-left: 10px;
+  }
+  .searchBar {
+    margin: auto;
+    margin-top: 2px;
+  }
 }
