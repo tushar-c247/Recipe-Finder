@@ -1,43 +1,39 @@
 import { Link } from 'react-router-dom'
 import "../styles/Navbar.scss"
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { SearchOutlined } from "@ant-design/icons";
 import RecipeContex from '../context/recipe/recipeContext';
 import { Button, Flex } from 'antd';
 
-
-const Navbar: React.FC<any> = () => {
+const Navbar: React.FC<any> = ({ handleSearchChange, serchInput }) => {
 
     const contex = useContext(RecipeContex)
-    const { serBar } = contex
+    const { serchBar } = contex
 
-    const [serchInp, setSerInp] = useState<string>("")
 
-    const setSerBar = (serval: string): void => {
-        serBar(serchInp)
-        if(serval == "breakfast"){
-            serBar("breakfast")
+    const setSerBar = (serchOnButton: string): void => {
+        if (serchOnButton == "breakfast") {
+            serchBar("breakfast")
         }
-        if(serval == "lunch"){
-            serBar("lunch")
+        if (serchOnButton == "lunch") {
+            serchBar("lunch")
         }
-        if(serval == "dinner"){
-            serBar("dinner")
+        if (serchOnButton == "dinner") {
+            serchBar("dinner")
         }
-        setSerInp("")
     }
 
     return (
         <>
             <div className='navbar'>
                 <ul className='navul'>
-                    <li className='navli'><Link className='link' to="/">Home</Link></li>
-                    <li className='navli'><Link className="link" to="/about">About</Link></li>
+                    <div id='navlidiv'><li className='navli'><Link onClick={() => serchBar("Recipe")} className='link' to="/">Home</Link></li>
+                        <li className='navli'><Link className="link" to="/about">About</Link></li></div>
                     <h2 className='tag'>Recipe.Finder</h2>
-                    <div>
-                        <input className="searchBar" value={serchInp} type="text"
+                    <div className='inpfieldbtn'>
+                        <input className="searchBar" value={serchInput} type="text"
                             placeholder=" Search Recipes"
-                            onChange={(e) => setSerInp(e.target.value)}
+                            onChange={(e) => handleSearchChange(e)}
                         />
                         <button className="serBtn" onClick={() => setSerBar("")}>
                             <SearchOutlined />
@@ -53,7 +49,7 @@ const Navbar: React.FC<any> = () => {
                         <Button onClick={() => setSerBar("dinner")}><li>Dinner</li></Button>
                     </Flex>
                 </ul>
-            </div>
+            </div>            
         </>
     )
 }

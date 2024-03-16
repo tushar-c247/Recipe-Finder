@@ -11,6 +11,10 @@
   // justify-content: center;
 }
 
+#navlidiv{
+  display: flex;
+}
+
 .navli {
   margin: 13px 13px;
   color: white;
@@ -26,7 +30,8 @@
 
 .tag {
   margin-top: 11px;
-  margin-left: 313px;
+  margin-left: auto;
+  color: #ffe4c3;
 }
 
 .searchBar {
@@ -36,13 +41,14 @@
   background-color: aliceblue;
   margin-left: 130px;
   border-style: double;
+  // margin-right: 54px;
 }
 
 .serBtn {
   height: 28px;
   margin-top: 10px;
   background-color: aliceblue;
-  margin-left: 1px;
+  margin-left: 2px;
 }
 
 .serIngrContainer {
@@ -59,28 +65,48 @@
     margin-top: 8px;
 }
 
+.inpfieldbtn{
+  margin-right: 54px;
+}
+
+
 @media only screen and (max-width: 918px) {
   .tag {
     margin-left: auto;
   }
   .searchBar {
-    margin-right: 2px;
+    margin-right: auto;
   }
   .serBtn {
     margin-right: 26px;
   }
+  .inpfieldbtn{
+    margin-right: 1px;
+  }
+  
+  
 }
 
 @media only screen and (max-width: 768px) {
   .tag {
     margin-left: auto;
+    margin-right: auto;
   }
   .searchBar {
     margin-left: auto;
+    margin-right: auto;
+    width: auto;
+  }
+  .inpfieldbtn{
+    margin-right: 1px;
   }
 }
 
 @media only screen and (max-width: 480px) {
+  #navlidiv{
+     display: flex;
+  }
+
   .navbar {
     height: auto;
   }
@@ -95,10 +121,16 @@
   }
 
   .tag {
-    margin-left: 10px;
+    margin-left: auto;
+    margin-top: -4px;
   }
   .searchBar {
-    margin: auto;
+    width: auto;
     margin-top: 2px;
+    margin-bottom: 7px;
+    margin-left: 44px;
+  }
+  .inpfieldbtn{
+    margin-right: 1px;
   }
 }
