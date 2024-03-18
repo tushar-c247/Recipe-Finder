@@ -1,24 +1,24 @@
-import { Link } from 'react-router-dom'
 import "../styles/Navbar.scss"
 import { useContext } from 'react';
+import { Link } from 'react-router-dom'
 import { SearchOutlined } from "@ant-design/icons";
 import RecipeContex from '../context/recipe/recipeContext';
 import { Button, Flex } from 'antd';
 
-const Navbar: React.FC<any> = ({ handleSearchChange, serchInput }) => {
+const Navbar: React.FC<any> = ({ handleSearchChange, serchInput}) => {
 
     const contex = useContext(RecipeContex)
     const { serchBar } = contex
 
 
-    const setSerBar = (serchOnButton: string): void => {
-        if (serchOnButton == "breakfast") {
+    const setSearchValue = (serchBtnvalue: string): void => {
+        if (serchBtnvalue == "breakfast") {
             serchBar("breakfast")
         }
-        if (serchOnButton == "lunch") {
+        if (serchBtnvalue == "lunch") {
             serchBar("lunch")
         }
-        if (serchOnButton == "dinner") {
+        if (serchBtnvalue == "dinner") {
             serchBar("dinner")
         }
     }
@@ -35,7 +35,7 @@ const Navbar: React.FC<any> = ({ handleSearchChange, serchInput }) => {
                             placeholder=" Search Recipes"
                             onChange={(e) => handleSearchChange(e)}
                         />
-                        <button className="serBtn" onClick={() => setSerBar("")}>
+                        <button className="serBtn">
                             <SearchOutlined />
                         </button>
                     </div>
@@ -44,9 +44,9 @@ const Navbar: React.FC<any> = ({ handleSearchChange, serchInput }) => {
             <div className='serIngrContainer'>
                 <ul className='serinpgre'>
                     <Flex gap="small" wrap="wrap">
-                        <Button onClick={() => setSerBar("breakfast")}><li>BreakFast</li></Button>
-                        <Button onClick={() => setSerBar("lunch")}><li>Lunch</li></Button>
-                        <Button onClick={() => setSerBar("dinner")}><li>Dinner</li></Button>
+                        <Button onClick={() => setSearchValue("breakfast")}><li>BreakFast</li></Button>
+                        <Button onClick={() => setSearchValue("lunch")}><li>Lunch</li></Button>
+                        <Button onClick={() => setSearchValue("dinner")}><li>Dinner</li></Button>
                     </Flex>
                 </ul>
             </div>            

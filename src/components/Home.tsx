@@ -6,6 +6,7 @@ import { ChangeEvent, useContext, useState, } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import RecipeContex from "../context/recipe/recipeContext";
 import Navbar from './Navbar'
+import { debounce } from "lodash";
 
 interface Recipes {
     recipe: {
@@ -25,19 +26,21 @@ interface Recipes {
 
 const Home: React.FC<any> = () => {
     const context = useContext(RecipeContex)
-    const { recipeData, serItem, serchBar } = context
+    const { recipeData, serchItem, serchBar } = context
     const [serchInput, setSerchInput] = useState<string>("")
 
-    console.log("seritem", serItem)
+    const debouncedSearch = debounce((input: string) => {
+        serchBar(input);
+      }, 500);
 
     const { isLoading, data, error } = useQuery({
-        queryKey: ["recipe", serItem],
-        queryFn: () => fetchData(serItem),
+        queryKey: ["recipe", serchItem],
+        queryFn: () => fetchData(serchItem),
     });
 
     const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
         setSerchInput(e.target.value)
-        serchBar(e.target.value)
+        debouncedSearch(e.target.value)
     }
     
     // const resultantData = useMemo(()=>{
@@ -47,9 +50,7 @@ const Home: React.FC<any> = () => {
     // },[serItem, data])
 
     console.log("data", data)
-    // if (isLoading) {
-    //     return <div className="cardsContainer"><CircularProgress /></div>;
-    // }
+    
     if (error) {
         return <h3>Error 404!</h3>;
     }
