@@ -26,7 +26,7 @@ const RecipeState: React.FC<RecipeStateProps> = (props) => {
         setIngrediet(ingredient)
     }
 
-    function serchBar(serValue: string,): void {
+    function searchBar(serValue: string,): void {
         if (serValue !== "") {
             setSerchItem(serValue)
         }
@@ -34,7 +34,7 @@ const RecipeState: React.FC<RecipeStateProps> = (props) => {
 
     return (
         <div>
-            <RecipeContex.Provider value={{recipeData, serchBar, label, image, dishType, mealType, calori, ingreDetails, serchItem, ingredient}}>
+            <RecipeContex.Provider value={{recipeData, searchBar, label, image, dishType, mealType, calori, ingreDetails, serchItem, ingredient}}>
                 {props.children}
             </RecipeContex.Provider>
         </div>

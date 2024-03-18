@@ -1,0 +1,28 @@
+.searchdiv{
+    height: 47px;
+    width: 100vw;
+    margin-top: 1px;
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+}
+
+.inputfield{
+    height: 34px;
+    width: 280px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.searchBtn{
+    width: 18px;
+    height: 35px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+@media screen and (max-width: 768px) {
+    .inputfield{
+        width: auto;
+    }
+}

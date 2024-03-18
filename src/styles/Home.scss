@@ -23,10 +23,11 @@
     }
   }
   
-  .foodlabel {
+  .divlabel {
     font-size: 18px;
     margin: 10px 0;
     text-align: center;
+    height: 35px;
   }
   
   .foodimg {
@@ -35,6 +36,7 @@
     object-fit: cover;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    margin-top: 20px;
   }
   
   #ingredientContainer {
@@ -52,6 +54,7 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-bottom: 15px;
   
     &:hover {
       background-color: #388e3c;
