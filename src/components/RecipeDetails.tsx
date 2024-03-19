@@ -13,7 +13,7 @@ interface ingredients {
 const RecipeDetails: React.FC<any> = () => {
   const {image, calori, label, dishType, mealType, ingredient } =
     useContext(RecipeContex);
-
+  
   return (
     <>
       <Navbar />

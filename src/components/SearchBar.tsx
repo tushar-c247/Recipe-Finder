@@ -5,8 +5,8 @@ import { SearchOutlined } from "@ant-design/icons";
 const SearchBar: React.FC<any> = ({ handleSearchChange, searchInput }) => {
     return (
         <div className='searchdiv'> 
-                <input className="inputfield" value={searchInput} type="text"
-                    placeholder=" Search Recipes"
+                <input name="searchField" className="inputfield" value={searchInput} type="text"
+                    placeholder=" Search For Recipes..."
                     onChange={(e) => handleSearchChange(e)}
                 />
                 <button className="searchBtn">

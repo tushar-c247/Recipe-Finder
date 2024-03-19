@@ -1,6 +1,6 @@
 import "../styles/Home.scss";
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { fetchData } from "../api/FetchData"
 import { ChangeEvent, useContext, useState, } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -25,41 +25,44 @@ interface Recipes {
     };
 }
 
-const Home: React.FC<any> = () => {
+const Home: React.FC = () => {
     const context = useContext(RecipeContex)
-    const { recipeData, serchItem, searchBar } = context
-    const [serachInput, setSerchInput] = useState<string>("")
+    const { recipeData, searchItem, searchBar } = context
+    
+    const [searchInput, setSerchInput] = useState<string>("")
 
     const debouncedSearch = debounce((input: string) => {
         searchBar(input);
       }, 500);
 
     const { isLoading, data, error } = useQuery({
-        queryKey: ["recipe", serchItem],
-        queryFn: () => fetchData(serchItem),    
+        queryKey: ["recipe", searchItem],
+        queryFn: () => fetchData(searchItem),    
     });
+    
+    if (error) {
+        return <h3>Page Not Found 404!</h3>;
+    }
 
     const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
         setSerchInput(e.target.value)
         debouncedSearch(e.target.value)
     }
     
+
     // const resultantData = useMemo(()=>{
-    //     if(serItem == "recipe"){
-    //         return data
+    //     if(searchItem == "recipe"){
+    //         return data 
     //     }
-    // },[serItem, data])
+    // },[searchItem, data])
+
 
     console.log("data", data)
     
-    if (error) {
-        return <h3>Error 404!</h3>;
-    }
-
     return (
         <>
             <Navbar/>
-            <SearchBar handleSearchChange={handleSearchChange} searchInput={serachInput}/>
+            <SearchBar handleSearchChange={handleSearchChange} searchInput={searchInput}/>
             {isLoading ?
                 <div className="cardsContainer"><CircularProgress /></div>
                 : <div className="cardsContainer">

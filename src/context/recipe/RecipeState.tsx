@@ -14,7 +14,7 @@ const RecipeState: React.FC<RecipeStateProps> = (props) => {
     const [calori, setCalori] = useState<number>()
     const [ingreDetails, setingreDetails] = useState<string[]>([])
     const [ingredient, setIngrediet] = useState<string[]>([])
-    const [serchItem, setSerchItem] = useState<string>("recipe")
+    const [searchItem, setSerchItem] = useState<string>("recipe")
 
     function recipeData(data: string[], img: string, calori: number, label: string, dishType: string[], mealType: string[], ingredient: string[]): void {
         setLabel(label)
@@ -26,15 +26,15 @@ const RecipeState: React.FC<RecipeStateProps> = (props) => {
         setIngrediet(ingredient)
     }
 
-    function searchBar(serValue: string,): void {
-        if (serValue !== "") {
-            setSerchItem(serValue)
+    function searchBar(searchValue: string,): void {
+        if (searchValue !== "") {
+            setSerchItem(searchValue)
         }
     }
 
     return (
         <div>
-            <RecipeContex.Provider value={{recipeData, searchBar, label, image, dishType, mealType, calori, ingreDetails, serchItem, ingredient}}>
+            <RecipeContex.Provider value={{recipeData, searchBar, label, image, dishType, mealType, calori, ingreDetails, searchItem, ingredient}}>
                 {props.children}
             </RecipeContex.Provider>
         </div>
